@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shepherd Cybersecurity</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --night: #0d1b2a;
+  --night2: #152232;
+  --navy: #1a2e44;
+  --gold: #c17f3a;
+  --gold2: #d4a055;
+  --cream: #f5ede0;
+  --fog: #c8bfb0;
+  --mist: #8a9ab0;
+  --star: #fdf6e3;
+  --hill1: #1a3a2a;
+  --hill2: #152e20;
+  --hill3: #0f2018;
+  --sheep: #e8ddd0;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--night);
+  color:var(--cream);
+  overflow-x:hidden;
+}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 48px;
+  background:rgba(13,27,42,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(193,127,58,0.15);
+}
+
+.nav-brand{
+  font-family:'Crimson Pro',serif;
+  font-size:20px;
+  color:var(--cream);
+  letter-spacing:0.02em;
+}
+
+.nav-brand span{color:var(--gold)}
+
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{
+  color:var(--fog);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:400;
+  letter-spacing:0.04em;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--gold2)}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+
+.stars{position:absolute;inset:0;pointer-events:none}
+
+.hero-content{
+  position:relative;z-index:10;
+  padding:120px 48px 80px;
+  max-width:620px;
+}
+
+.hero-eyebrow{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+
+.hero-title{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(42px,6vw,68px);
+  font-weight:600;
+  line-height:1.1;
+  color:var(--cream);
+  margin-bottom:12px;
+}
+
+.hero-title em{
+  font-style:italic;
+  color:var(--gold2);
+}
+
+.hero-sub{
+  font-size:16px;
+  font-weight:300;
+  color:var(--fog);
+  line-height:1.7;
+  margin-bottom:36px;
+  max-width:480px;
+}
+
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--gold);
+  color:#1a1000;
+  font-weight:500;
+  font-size:14px;
+  padding:14px 28px;
+  border-radius:4px;
+  text-decoration:none;
+  transition:background 0.2s,transform 0.15s;
+}
+.hero-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+
+.hero-cta-ghost{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(193,127,58,0.4);
+  color:var(--gold2);
+  font-weight:400;
+  font-size:14px;
+  padding:13px 28px;
+  border-radius:4px;
+  text-decoration:none;
+  margin-left:14px;
+  transition:border-color 0.2s,background 0.2s;
+}
+.hero-cta-ghost:hover{border-color:var(--gold);background:rgba(193,127,58,0.08)}
+
+/* ── SCENE SVG ── */
+.scene{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  width:100%;
+  pointer-events:none;
+}
+
+/* ── ABOUT ── */
+.about{
+  background:var(--night2);
+  padding:96px 48px;
+  border-top:1px solid rgba(193,127,58,0.12);
+}
+
+.section-inner{max-width:960px;margin:0 auto}
+
+.section-label{
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+
+.section-title{
+  font-family:'Crimson Pro',serif;
+  font-size:36px;
+  font-weight:600;
+  color:var(--cream);
+  margin-bottom:20px;
+  line-height:1.2;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  align-items:start;
+  margin-top:40px;
+}
+
+.about-text p{
+  font-size:15px;
+  font-weight:300;
+  color:var(--fog);
+  line-height:1.8;
+  margin-bottom:16px;
+}
+
+.about-text strong{color:var(--cream);font-weight:500}
+
+.cred-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:8px;
+}
+
+.cred-item{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:16px 20px;
+  background:rgba(193,127,58,0.06);
+  border:1px solid rgba(193,127,58,0.15);
+  border-radius:6px;
+}
+
+.cred-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--gold);
+  margin-top:6px;
+  flex-shrink:0;
+}
+
+.cred-text{
+  font-size:14px;
+  color:var(--fog);
+  font-weight:300;
+  line-height:1.6;
+}
+
+.cred-text strong{color:var(--cream);font-weight:500}
+
+/* ── SERVICES ── */
+.services{
+  background:var(--night);
+  padding:96px 48px;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:48px;
+}
+
+.service-card{
+  background:var(--night2);
+  border:1px solid rgba(193,127,58,0.15);
+  border-radius:8px;
+  padding:28px 24px;
+  transition:border-color 0.2s,transform 0.2s;
+}
+
+.service-card:hover{
+  border-color:rgba(193,127,58,0.4);
+  transform:translateY(-3px);
+}
+
+.service-num{
+  font-family:'Crimson Pro',serif;
+  font-size:32px;
+  color:rgba(193,127,58,0.25);
+  font-weight:600;
+  margin-bottom:14px;
+  display:block;
+}
+
+.service-title{
+  font-size:16px;
+  font-weight:500;
+  color:var(--cream);
+  margin-bottom:10px;
+}
+
+.service-desc{
+  font-size:13.5px;
+  font-weight:300;
+  color:var(--fog);
+  line-height:1.7;
+  margin-bottom:16px;
+}
+
+.service-price{
+  font-size:13px;
+  font-weight:500;
+  color:var(--gold2);
+  letter-spacing:0.02em;
+}
+
+/* ── WHY ── */
+.why{
+  background:var(--night2);
+  padding:80px 48px;
+  border-top:1px solid rgba(193,127,58,0.12);
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+  margin-top:48px;
+}
+
+.why-item{
+  text-align:center;
+  padding:24px 20px;
+}
+
+.why-icon{
+  width:48px;height:48px;
+  border-radius:50%;
+  background:rgba(193,127,58,0.1);
+  border:1px solid rgba(193,127,58,0.2);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  font-size:20px;
+}
+
+.why-title{
+  font-size:15px;
+  font-weight:500;
+  color:var(--cream);
+  margin-bottom:8px;
+}
+
+.why-desc{
+  font-size:13.5px;
+  font-weight:300;
+  color:var(--fog);
+  line-height:1.7;
+}
+
+/* ── DOWNLOAD ── */
+.download{
+  background:var(--night);
+  padding:80px 48px;
+  border-top:1px solid rgba(255,255,255,0.04);
+  text-align:center;
+}
+
+.download-box{
+  max-width:540px;
+  margin:0 auto;
+  background:var(--night2);
+  border:1px solid rgba(193,127,58,0.2);
+  border-radius:12px;
+  padding:48px 40px;
+}
+
+.download-title{
+  font-family:'Crimson Pro',serif;
+  font-size:28px;
+  font-weight:600;
+  color:var(--cream);
+  margin-bottom:12px;
+}
+
+.download-sub{
+  font-size:14px;
+  font-weight:300;
+  color:var(--fog);
+  line-height:1.7;
+  margin-bottom:28px;
+}
+
+.download-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--gold);
+  color:#1a1000;
+  font-weight:500;
+  font-size:14px;
+  padding:14px 32px;
+  border-radius:4px;
+  text-decoration:none;
+  transition:background 0.2s;
+}
+.download-btn:hover{background:var(--gold2)}
+
+/* ── CONTACT ── */
+.contact{
+  background:var(--night2);
+  padding:96px 48px;
+  border-top:1px solid rgba(193,127,58,0.12);
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:start;
+  margin-top:40px;
+}
+
+.contact-info p{
+  font-size:15px;
+  font-weight:300;
+  color:var(--fog);
+  line-height:1.8;
+  margin-bottom:24px;
+}
+
+.contact-detail{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+  font-size:14px;
+  color:var(--fog);
+}
+
+.contact-detail a{
+  color:var(--gold2);
+  text-decoration:none;
+}
+.contact-detail a:hover{color:var(--cream)}
+
+.contact-dot{
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--gold);
+  flex-shrink:0;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+label{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--mist);
+  display:block;
+  margin-bottom:6px;
+}
+
+input,textarea,select{
+  width:100%;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:4px;
+  color:var(--cream);
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:300;
+  padding:12px 16px;
+  transition:border-color 0.2s;
+  outline:none;
+}
+
+input::placeholder,textarea::placeholder{color:rgba(200,191,176,0.35)}
+
+input:focus,textarea:focus,select:focus{
+  border-color:rgba(193,127,58,0.5);
+  background:rgba(255,255,255,0.06);
+}
+
+select option{background:var(--navy);color:var(--cream)}
+
+textarea{resize:vertical;min-height:120px}
+
+.submit-btn{
+  background:var(--gold);
+  color:#1a1000;
+  border:none;
+  border-radius:4px;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:500;
+  padding:14px 28px;
+  cursor:pointer;
+  transition:background 0.2s,transform 0.15s;
+  align-self:flex-start;
+}
+.submit-btn:hover{background:var(--gold2);transform:translateY(-1px)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--night);
+  border-top:1px solid rgba(193,127,58,0.12);
+  padding:32px 48px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.footer-brand{
+  font-family:'Crimson Pro',serif;
+  font-size:16px;
+  color:var(--fog);
+}
+
+.footer-brand span{color:var(--gold)}
+
+.footer-right{
+  font-size:12px;
+  color:var(--mist);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:16px 24px}
+  .hero-content{padding:100px 24px 60px}
+  .about,.services,.why,.download,.contact{padding:64px 24px}
+  .about-grid,.services-grid,.why-grid,.contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Shepherd <span>Cybersecurity</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+
+  <!-- Stars -->
+  <svg class="stars" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <rect width="1440" height="900" fill="#0d1b2a"/>
+    <!-- Moon -->
+    <circle cx="1100" cy="130" r="52" fill="#ede8da" opacity="0.92"/>
+    <circle cx="1124" cy="118" r="48" fill="#0d1b2a" opacity="0.85"/>
+    <!-- Stars scattered -->
+    <g fill="#fdf6e3">
+      <circle cx="120" cy="60" r="1.2" opacity="0.9"/>
+      <circle cx="240" cy="35" r="0.8" opacity="0.7"/>
+      <circle cx="380" cy="80" r="1.5" opacity="0.8"/>
+      <circle cx="520" cy="45" r="0.9" opacity="0.6"/>
+      <circle cx="660" cy="70" r="1.1" opacity="0.85"/>
+      <circle cx="780" cy="30" r="0.7" opacity="0.7"/>
+      <circle cx="900" cy="90" r="1.3" opacity="0.75"/>
+      <circle cx="960" cy="55" r="0.8" opacity="0.6"/>
+      <circle cx="1200" cy="80" r="1" opacity="0.7"/>
+      <circle cx="1300" cy="50" r="1.4" opacity="0.8"/>
+      <circle cx="1380" cy="100" r="0.9" opacity="0.65"/>
+      <circle cx="60" cy="140" r="1" opacity="0.6"/>
+      <circle cx="200" cy="160" r="0.8" opacity="0.55"/>
+      <circle cx="440" cy="130" r="1.2" opacity="0.7"/>
+      <circle cx="600" cy="150" r="0.9" opacity="0.6"/>
+      <circle cx="820" cy="140" r="1.1" opacity="0.65"/>
+      <circle cx="1050" cy="200" r="0.8" opacity="0.55"/>
+      <circle cx="1250" cy="160" r="1.3" opacity="0.7"/>
+      <circle cx="1400" cy="170" r="0.7" opacity="0.6"/>
+      <circle cx="160" cy="220" r="0.9" opacity="0.5"/>
+      <circle cx="350" cy="200" r="1.1" opacity="0.6"/>
+      <circle cx="700" cy="210" r="0.8" opacity="0.55"/>
+      <circle cx="1150" cy="250" r="1" opacity="0.5"/>
+      <!-- Bright stars -->
+      <circle cx="310" cy="55" r="2" opacity="0.9"/>
+      <circle cx="750" cy="40" r="1.8" opacity="0.85"/>
+      <circle cx="1050" cy="65" r="1.6" opacity="0.8"/>
+      <!-- Twinkling lines -->
+      <line x1="310" y1="49" x2="310" y2="43" stroke="#fdf6e3" stroke-width="0.8" opacity="0.5"/>
+      <line x1="304" y1="55" x2="316" y2="55" stroke="#fdf6e3" stroke-width="0.8" opacity="0.5"/>
+    </g>
+    <!-- Milky way soft glow -->
+    <ellipse cx="720" cy="180" rx="600" ry="60" fill="rgba(180,170,210,0.04)"/>
+  </svg>
+
+  <!-- Illustrated scene -->
+  <svg class="scene" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax meet">
+    <!-- Far hills -->
+    <path d="M0 420 L0 280 Q180 200 360 260 Q540 310 720 250 Q900 190 1080 240 Q1260 290 1440 240 L1440 420 Z" fill="#0f2018"/>
+    <!-- Mid hills -->
+    <path d="M0 420 L0 320 Q120 280 240 300 Q360 320 480 290 Q600 260 720 280 Q840 300 960 270 Q1080 240 1200 270 Q1320 300 1440 280 L1440 420 Z" fill="#152e20"/>
+    <!-- Near hill -->
+    <path d="M0 420 L0 360 Q200 320 400 340 Q600 360 800 330 Q1000 300 1200 330 Q1350 350 1440 340 L1440 420 Z" fill="#1a3a2a"/>
+    <!-- Foreground ground -->
+    <path d="M0 420 L0 395 Q360 380 720 385 Q1080 390 1440 380 L1440 420 Z" fill="#1e4030"/>
+
+    <!-- Shepherd figure — simple lofi style -->
+    <g transform="translate(820, 290)">
+      <!-- Staff -->
+      <line x1="18" y1="0" x2="12" y2="85" stroke="#8B7355" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Crook of staff -->
+      <path d="M12 0 Q18 -8 24 -2" fill="none" stroke="#8B7355" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Cloak -->
+      <path d="M20 20 Q8 30 6 60 Q18 65 30 60 Q32 30 20 20" fill="#4a6741" stroke="none"/>
+      <!-- Cloak hood -->
+      <path d="M14 20 Q8 10 16 4 Q24 -2 26 8 Q28 18 20 20 Z" fill="#4a6741"/>
+      <!-- Face -->
+      <circle cx="20" cy="8" r="5" fill="#c4956a"/>
+      <!-- Hat brim -->
+      <ellipse cx="20" cy="4" rx="8" ry="2.5" fill="#3d5535"/>
+      <path d="M16 4 Q20 -4 24 4" fill="#3d5535"/>
+    </g>
+
+    <!-- Sheep 1 — main sheep -->
+    <g transform="translate(870, 330)">
+      <!-- Body -->
+      <ellipse cx="20" cy="12" rx="20" ry="13" fill="#e8ddd0"/>
+      <!-- Wool texture bumps -->
+      <circle cx="8" cy="6" r="7" fill="#ede3d6"/>
+      <circle cx="18" cy="4" r="8" fill="#ede3d6"/>
+      <circle cx="28" cy="6" r="7" fill="#ede3d6"/>
+      <circle cx="33" cy="12" r="6" fill="#e2d7c8"/>
+      <circle cx="7" cy="14" r="6" fill="#e2d7c8"/>
+      <!-- Head -->
+      <ellipse cx="38" cy="10" rx="8" ry="6" fill="#c8bfb0"/>
+      <!-- Ear -->
+      <ellipse cx="42" cy="6" rx="3" ry="2" fill="#c8bfb0" transform="rotate(-20 42 6)"/>
+      <!-- Eye -->
+      <circle cx="41" cy="9" r="1.2" fill="#4a3728"/>
+      <!-- Legs -->
+      <rect x="8" y="22" width="3" height="10" rx="1.5" fill="#b5a898"/>
+      <rect x="14" y="22" width="3" height="10" rx="1.5" fill="#b5a898"/>
+      <rect x="24" y="22" width="3" height="10" rx="1.5" fill="#b5a898"/>
+      <rect x="30" y="22" width="3" height="10" rx="1.5" fill="#b5a898"/>
+    </g>
+
+    <!-- Sheep 2 — smaller, distant -->
+    <g transform="translate(780, 340)" opacity="0.75">
+      <ellipse cx="14" cy="8" rx="14" ry="9" fill="#e8ddd0"/>
+      <circle cx="5" cy="4" r="5" fill="#ede3d6"/>
+      <circle cx="13" cy="2" r="6" fill="#ede3d6"/>
+      <circle cx="21" cy="4" r="5" fill="#ede3d6"/>
+      <ellipse cx="26" cy="7" rx="6" ry="4" fill="#c8bfb0"/>
+      <circle cx="29" cy="6" r="0.9" fill="#4a3728"/>
+      <rect x="5" y="15" width="2.5" height="7" rx="1.2" fill="#b5a898"/>
+      <rect x="10" y="15" width="2.5" height="7" rx="1.2" fill="#b5a898"/>
+      <rect x="17" y="15" width="2.5" height="7" rx="1.2" fill="#b5a898"/>
+      <rect x="22" y="15" width="2.5" height="7" rx="1.2" fill="#b5a898"/>
+    </g>
+
+    <!-- Distant village lights -->
+    <g opacity="0.6">
+      <rect x="200" y="295" width="4" height="6" rx="0.5" fill="#f5c842"/>
+      <rect x="210" y="290" width="3" height="8" rx="0.5" fill="#f5c842"/>
+      <rect x="1100" y="270" width="4" height="5" rx="0.5" fill="#f5c842"/>
+      <rect x="1112" y="268" width="3" height="6" rx="0.5" fill="#f5c842"/>
+      <rect x="1122" y="272" width="4" height="4" rx="0.5" fill="#f5c842"/>
+    </g>
+
+    <!-- Fireflies -->
+    <g opacity="0.7">
+      <circle cx="700" cy="310" r="1.5" fill="#c8f542"/>
+      <circle cx="750" cy="295" r="1" fill="#c8f542"/>
+      <circle cx="760" cy="320" r="1.5" fill="#c8f542"/>
+      <circle cx="1000" cy="300" r="1" fill="#c8f542"/>
+      <circle cx="1020" cy="315" r="1.5" fill="#c8f542"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Higher Education Cybersecurity</div>
+    <h1 class="hero-title">
+      Guiding your<br><em>GRC.</em>
+    </h1>
+    <p class="hero-sub">
+      GLBA Safeguards Rule compliance for colleges and universities —
+      practical, affordable, and built by someone who has done this work from the inside.
+    </p>
+    <div>
+      <a href="#contact" class="hero-cta">Get in touch</a>
+      <a href="#download" class="hero-cta-ghost">Download capability brief</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <h2 class="section-title">I've sat in your chair.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Most university IT teams are navigating GLBA compliance, vendor risk, and federal audit requirements
+          with limited staff and no dedicated GRC function. I know that environment because
+          <strong>I worked in it</strong> — as a GRC analyst at Liberty University, building their
+          GLBA, HIPAA, and FERPA compliance programs from the ground up.
+        </p>
+        <p>
+          Shepherd Cybersecurity exists to bring <strong>practical, affordable compliance support</strong> to
+          institutions that need expert guidance without the enterprise price tag. No junior staff handoffs,
+          no bloated proposals, no tools you have to learn to use.
+        </p>
+        <p>
+          Just a knowledgeable person who understands your regulatory obligations, your budget constraints,
+          and what auditors actually look for.
+        </p>
+      </div>
+      <div class="cred-list">
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>Former GRC Analyst, Liberty University</strong> — GLBA, PCI, HIPAA, and FERPA compliance programs</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>GIAC Security Essentials (GSEC)</strong> — GIAC certified cybersecurity professional</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>CompTIA Security+</strong> — Foundational security certification</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>Texas-based, higher ed focused</strong> — Solo practitioner, direct access to Seth Patterson on every engagement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">How I can help</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <div class="service-title">GLBA Safeguards Readiness Assessment</div>
+        <p class="service-desc">
+          A structured review of your institution's compliance posture against all applicable
+          FTC Safeguards Rule elements. You receive a written gap analysis, risk register,
+          prioritized remediation roadmap, and a board-ready executive summary.
+        </p>
+        <div class="service-price">Starting at $5,000 · Delivered in under 2 weeks</div>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <div class="service-title">TPRM Program Buildout</div>
+        <p class="service-desc">
+          Build or mature your third-party risk management program — vendor inventory, risk tiering,
+          HECVAT workflow setup, and policy documentation that satisfies both auditors and your IT team.
+        </p>
+        <div class="service-price">Starting at $7,500</div>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <div class="service-title">Fractional CISO / Advisory Retainer</div>
+        <p class="service-desc">
+          Ongoing monthly advisory support — governance check-ins, vendor contract reviews,
+          regulatory update briefings, and on-call guidance for incidents and audit prep.
+          Expert coverage without a full-time hire.
+        </p>
+        <div class="service-price">$2,500–$4,500 / month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY ── -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-label">Why Shepherd</div>
+    <h2 class="section-title">What makes this different</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🏛</div>
+        <div class="why-title">Built for higher ed</div>
+        <p class="why-desc">I've worked inside a university GRC program. I understand decentralized IT environments, shared governance, and what federal auditors look for in higher ed specifically.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📋</div>
+        <div class="why-title">Practical, not theoretical</div>
+        <p class="why-desc">Every deliverable is designed to satisfy auditors and actually help your team. You get a report you can take to your board and a roadmap you can actually follow.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💡</div>
+        <div class="why-title">No enterprise overhead</div>
+        <p class="why-desc">Direct access to Seth Patterson on every engagement. No junior staff, no bloated contracts, no tools you have to license. Straightforward pricing designed for university budgets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DOWNLOAD ── -->
+<section class="download" id="download">
+  <div class="section-inner">
+    <div class="download-box">
+      <div class="section-label" style="text-align:center">Capability Brief</div>
+      <div class="download-title">See what an engagement looks like</div>
+      <p class="download-sub">Download the Shepherd Cybersecurity capability brief for a full overview of services, deliverables, and what to expect from working with us.</p>
+      <a href="mailto:seth@shepherdcybersec.io?subject=Capability Brief Request" class="download-btn">
+        Request capability brief
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's talk</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>
+          If your institution is managing GLBA obligations, working through a recent audit finding,
+          or simply not sure where your program stands — I'd welcome a conversation.
+          No pitch, just 20 minutes to see if there's a fit.
+        </p>
+        <div class="contact-detail">
+          <div class="contact-dot"></div>
+          <span>Email: <a href="mailto:seth@shepherdcybersec.io">seth@shepherdcybersec.io</a></span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-dot"></div>
+          <span>Based in Texas · Serving higher ed institutions nationally</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-dot"></div>
+          <span>GSEC · CompTIA Security+ · Former GRC Analyst, Liberty University</span>
+        </div>
+      </div>
+      <form onsubmit="handleSubmit(event)">
+        <div>
+          <label>Your name</label>
+          <input type="text" id="name" placeholder="Jane Smith" required/>
+        </div>
+        <div>
+          <label>Institution email</label>
+          <input type="email" id="email" placeholder="jsmith@university.edu" required/>
+        </div>
+        <div>
+          <label>Institution name</label>
+          <input type="text" id="institution" placeholder="Grayson College"/>
+        </div>
+        <div>
+          <label>What can I help with?</label>
+          <select id="topic">
+            <option value="">Select a topic</option>
+            <option>GLBA Safeguards Assessment</option>
+            <option>TPRM Program Buildout</option>
+            <option>Fractional CISO / Advisory Retainer</option>
+            <option>General question</option>
+          </select>
+        </div>
+        <div>
+          <label>Message (optional)</label>
+          <textarea id="message" placeholder="Tell me a bit about where things stand at your institution..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Send message</button>
+        <p id="formMsg" style="font-size:13px;color:#c17f3a;margin-top:8px;display:none"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Shepherd <span>Cybersecurity</span> LLC</div>
+  <div class="footer-right">seth@shepherdcybersec.io &nbsp;·&nbsp; GSEC · Security+ &nbsp;·&nbsp; Texas LLC</div>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value;
+  const email=document.getElementById('email').value;
+  const institution=document.getElementById('institution').value;
+  const topic=document.getElementById('topic').value;
+  const message=document.getElementById('message').value;
+  const subject=encodeURIComponent('Website inquiry'+(topic?' — '+topic:''));
+  const body=encodeURIComponent('Name: '+name+'\nInstitution: '+institution+'\nTopic: '+topic+'\n\n'+message);
+  window.location.href='mailto:seth@shepherdcybersec.io?subject='+subject+'&body='+body;
+  document.getElementById('formMsg').style.display='block';
+  document.getElementById('formMsg').textContent='Opening your email client — thank you, '+name.split(' ')[0]+'.';
+  document.getElementById('submitBtn').textContent='Sent';
+  document.getElementById('submitBtn').style.background='#27ae60';
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
